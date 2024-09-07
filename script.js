@@ -8,6 +8,16 @@ function renderTodos() {
   todoList.innerHTML = '';
   todos.forEach((todo, index) => {
     const li = document.createElement('li');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        li.style.textDecoration = 'line-through';
+      } else {
+        li.style.textDecoration = 'none';
+      }
+    });
+    li.appendChild(checkbox);
     li.textContent = todo;
     const deleteButton = document.createElement('button');
     deleteButton.textContent = '削除';
